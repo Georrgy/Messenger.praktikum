@@ -1,6 +1,10 @@
 /** @type {import('postcss-load-config').Config} */
 const config = {
-  plugins: [require('autoprefixer'), require('postcss-nested')],
+  plugins: [
+    require('autoprefixer'),
+    require('postcss-nested'),
+    require('postcss-short'),
+  ],
 };
 
 module.exports = config;

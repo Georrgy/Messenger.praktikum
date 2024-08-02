@@ -6,7 +6,12 @@ import './Login.scss';
 const loginTemplate = Handlebars.compile(loginTemplateRaw);
 
 const Login: React.FC = () => {
-    const html = loginTemplate({});
+    const html = loginTemplate({
+        title: 'Login',
+        buttonText: 'Sign in',
+        registerText: 'Sign up',
+    });
+
     return <div dangerouslySetInnerHTML={{ __html: html }} />;
 };
 

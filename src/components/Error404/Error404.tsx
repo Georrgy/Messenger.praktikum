@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Handlebars from 'handlebars';
 import error404TemplateRaw from '../../templates/404.hbs?raw';
-import './Error404.scss';
 
 const error404Template = Handlebars.compile(error404TemplateRaw);
 
@@ -12,9 +11,7 @@ const Error404: React.FC = () => {
     // }, []);
 
     const html = error404Template({});
-    return <div className='error'>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-    </div>;
+    return <div dangerouslySetInnerHTML={{ __html: html }} />
 };
 
 export default Error404;
