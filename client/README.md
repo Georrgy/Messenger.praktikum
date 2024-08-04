@@ -46,7 +46,7 @@ npm run lint
 ## Деплой
 
 Приложение развернуто на Netlify и доступно по адресу:
-https://splendorous-squirrel-8efd81.netlify.app
+https://melodious-twilight-860665.netlify.app
 
 ### Ссылки на страницы
 
