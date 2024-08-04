@@ -46,7 +46,7 @@ npm run lint
 ## Деплой
 
 Приложение развернуто на Netlify и доступно по адресу:
-https://melodious-twilight-860665.netlify.app
+https://melodious-twilight-860665.netlify.app/
 
 ### Ссылки на страницы
 
