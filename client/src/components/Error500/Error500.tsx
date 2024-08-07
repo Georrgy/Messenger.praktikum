@@ -1,6 +1,7 @@
 import React from 'react';
 import Handlebars from 'handlebars';
 import error500TemplateRaw from '../../templates/500.hbs?raw';
+import './Error500.scss'
 
 const error500Template = Handlebars.compile(error500TemplateRaw);
 
