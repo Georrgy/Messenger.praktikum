@@ -54,3 +54,4 @@ https://melodious-twilight-860665.netlify.app/
 - Страница регистрации: http://localhost:3000/register
 - Страница 404: http://localhost:3000/Error404
 - Страница 500: http://localhost:3000/Error500
+- Страница Профайл: http://localhost:3000/profile
