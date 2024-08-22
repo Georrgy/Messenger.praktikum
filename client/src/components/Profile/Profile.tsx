@@ -1,5 +1,4 @@
 import React from 'react';
-import './Profile.scss';  // Import the SCSS file
 import { Link } from 'react-router-dom';
 
 const Profile: React.FC = () => {

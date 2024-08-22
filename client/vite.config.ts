@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint';
+import stylelint from 'vite-plugin-stylelint';
+//npm install vite-plugin-stylelint -D
+
 
 // import handlebars from 'vite-plugin-handlebars';
 // import raw from 'vite-plugin-raw';
@@ -9,7 +12,11 @@ import eslint from 'vite-plugin-eslint';
 export default defineConfig({
   plugins: [
     react(),
-    eslint()
+    eslint(),
+    stylelint({
+      // recommend to enable auto fix
+      fix: true,
+    }),
   //   handlebars({
   //     partialDirectory: path.resolve(__dirname, 'src/templates'),
   //   }),
@@ -23,3 +30,4 @@ export default defineConfig({
 });
 
 // npm install eslint-config-react-app --save-dev
+

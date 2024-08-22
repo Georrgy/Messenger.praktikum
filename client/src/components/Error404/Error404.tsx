@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Handlebars from 'handlebars';
 import error404TemplateRaw from '../../templates/404.hbs?raw';
 import './Error404.scss'
