@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import eslint from 'vite-plugin-eslint';
-import stylelint from 'vite-plugin-stylelint';
+import checker from "vite-plugin-checker"
 //npm install vite-plugin-stylelint -D
 
 
@@ -12,10 +11,15 @@ import stylelint from 'vite-plugin-stylelint';
 export default defineConfig({
   plugins: [
     react(),
-    eslint(),
-    stylelint({
-      // recommend to enable auto fix
-      fix: true,
+    checker({
+      eslint:{
+        lintCommand: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+      },
+      overlay: false,
+      typescript:true,
+      stylelint:{
+        lintCommand: "stylelint \"**/*.scss\""
+      }
     }),
   //   handlebars({
   //     partialDirectory: path.resolve(__dirname, 'src/templates'),

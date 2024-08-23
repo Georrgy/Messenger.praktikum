@@ -15,7 +15,7 @@ export class Api {
     return await response.json();
   }
   //method for post data to server
-  async post(url: string, data: any) {
+  async post(url: string, data: object) {
     const response = await fetch(url, {
       method: methods.POST,
       headers: this.headers,
