@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register/Register';
@@ -31,6 +31,13 @@ const App: React.FC = () => {
 export default App;
 
 function Home() {
+  useEffect(() => {
+    // POST-c GET-r PUT-u DELETE-d = CreateReadUpdateDelete operations
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(d => console.log(d))
+
+  }, [])
   return (
     <header>
       <ul>
