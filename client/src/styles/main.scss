@@ -4,7 +4,6 @@
     --white: #fff;
 }
 
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -31,11 +30,13 @@ a:hover {
 nav {
   ul {
     padding: 0;
+    
     li {
       list-style-type: none;
     }
   }
 }
+
 form {
   .form-group {
     margin-bottom: 15px;
@@ -61,4 +62,27 @@ form {
     border-radius: 4px;
     cursor: pointer;
   }
+}
+
+.error {
+  color:red;
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: blue;
+    text-decoration: underline;
+  }
+}
+
+.custom-height {
+  size: 500px;
 }
