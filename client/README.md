@@ -51,7 +51,7 @@ https://melodious-twilight-860665.netlify.app/
 ### Ссылки на страницы
 
 - Страница входа: http://localhost:3000/login
-- Страница регистрации: http://localhost:3000/register
+- Страница регистрации: http://localhost:3000/sign-up
 - Страница 404: http://localhost:3000/Error404
 - Страница 500: http://localhost:3000/Error500
-- Страница Профайл: http://localhost:3000/profile
+- Страница Профайл: http://localhost:3000/settings
