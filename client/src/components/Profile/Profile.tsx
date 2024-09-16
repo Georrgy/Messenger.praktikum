@@ -8,8 +8,7 @@ export type User = {
     phone: string
 }
 
-const Profile: React.FC = () => {
-    const [token] = useState(localStorage.getItem('token'))
+const Profile: React.FC<{ token: string | null }> = ({ token }) => {
     const [me, setMe] = useState<User>(null as unknown as User)
 
     useEffect(() => {

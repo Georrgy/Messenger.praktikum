@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register/Register';
@@ -9,24 +9,29 @@ import EditProfile from './components/EditProfile/EditProfile';
 import ChangePassword from './components/ChangePassword/ChangePassword';
 import UpdateAvatar from './components/UpdateAvatar/UpdateAvatar';
 import Messenger from './components/Messenger';
-import { useNavigate } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 
 
-const App: React.FC = () => {
+const App: FC = () => {
+  const [token, setToken] = useState(localStorage.getItem('token'))
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} >
+        <Route path="/" element={<Home token={token} setToken={setToken} />} >
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<Register />} />
           <Route path="/404" element={<Error404 />} />
           <Route path="/500" element={<Error500 />} />
-          <Route path="/settings" element={<Profile />} />
-          <Route path="/messenger" element={<Messenger />} />
-          <Route path="/settings/edit" element={<EditProfile />} />
-          <Route path="/settings/change-password" element={<ChangePassword />} />
-          <Route path="/settings/update-avatar" element={<UpdateAvatar />} />
           <Route path="*" element={<Error404 />} />
+          {token &&
+            <>
+              <Route path="/settings" element={<Profile token={token} />} />
+              <Route path="/messenger" element={<Messenger />} />
+              <Route path="/settings/edit" element={<EditProfile />} />
+              <Route path="/settings/change-password" element={<ChangePassword />} />
+              <Route path="/settings/update-avatar" element={<UpdateAvatar />} />
+            </>}
         </Route>
       </Routes>
     </Router>
@@ -35,12 +40,10 @@ const App: React.FC = () => {
 
 export default App;
 
-function Home() {
-  const [token, setToken] = useState(localStorage.getItem('token'))
-  const navigate = useNavigate()
+const Home: FC<{ token: string | null, setToken: (token: string | null) => void }> = ({ token, setToken }) => {
 
   if (!token) {
-    navigate('/login')
+    redirect('/login')
   }
 
 
