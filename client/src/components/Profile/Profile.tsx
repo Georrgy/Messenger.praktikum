@@ -13,8 +13,10 @@ const Profile: React.FC<{ token: string | null }> = ({ token }) => {
 
     useEffect(() => {
         if (token) {
-            Api.post('/api/me', { token })
-                .then(setMe)
+            try {
+                Api.post('/api/me', { token })
+                    .then(setMe)
+            } catch (e) { console.log(e) }
         }
     }, [token])
 
