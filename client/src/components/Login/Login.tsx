@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import Handlebars from 'handlebars';
 import loginTemplateRaw from '../../templates/login.hbs?raw';
 import './Login.scss';
+import { Api } from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 const loginTemplate = Handlebars.compile(loginTemplateRaw);
 
 const Login: React.FC = () => {
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const navigate = useNavigate()
 
     const validate = (formData: FormData) => {
         const newErrors: Record<string, string> = {};
         const password = formData.get('password')
-        if (!formData.get('login')) {
+        const login = formData.get('login')
+        if (!login) {
             newErrors.login = 'Login is required';
         }
         if (!password) {
@@ -19,6 +23,12 @@ const Login: React.FC = () => {
         }
         // Add more validation as needed
 
+        // No validation errors, proceed with form submission
+        Api.post('/api/login', { login, password })
+            .then(res => {
+                localStorage.setItem('token', res)
+                navigate('/')
+            })
 
         return newErrors;
     };
@@ -50,7 +60,7 @@ const Login: React.FC = () => {
             <nav>
                 <ul>
                     <li>
-                        <a href='/register'>Sign up</a>
+                        <a href='/sign-up'>Sign up</a>
                     </li>
                 </ul>
             </nav>

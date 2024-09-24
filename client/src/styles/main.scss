@@ -1,7 +1,7 @@
-:root{
-    --blue: #007bff;
-    --bg-white: #f0f0f0;
-    --white: #fff;
+:root {
+  --blue: #007bff;
+  --bg-white: #f0f0f0;
+  --white: #fff;
 }
 
 body {
@@ -30,7 +30,7 @@ a:hover {
 nav {
   ul {
     padding: 0;
-    
+
     li {
       list-style-type: none;
     }
@@ -65,7 +65,7 @@ form {
 }
 
 .error {
-  color:red;
+  color: red;
 
   h1 {
     font-size: 36px;
@@ -85,4 +85,57 @@ form {
 
 .custom-height {
   size: 500px;
+}
+
+.chat-container {
+  display: flex;
+
+  /* Расположить элементы в строку */
+  height: 100vh;
+
+  /* Высота экрана */
+}
+
+.chat-list {
+  width: 30%;
+
+  /* Занимает 30% ширины экрана */
+  background-color: #f0f0f0;
+
+  /* Светлый фон */
+  padding: 20px;
+  border-right: 1px solid #ccc;
+
+  /* Разделитель */
+  overflow-y: auto;
+
+  /* Прокрутка */
+}
+
+.chat-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+
+  
+  /* Указатель при наведении */
+}
+
+.chat-item:hover {
+  background-color: #e0e0e0;
+
+  /* Изменение цвета при наведении */
+}
+
+/* Область сообщений */
+.chat-messages {
+  width: 70%;
+
+  /* Остальная часть экрана */
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
 }

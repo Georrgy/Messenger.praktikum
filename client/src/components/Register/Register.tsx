@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import Handlebars from 'handlebars';
 import registerTemplateRaw from '../../templates/register.hbs?raw';
+import { Api } from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
+import { User } from '../Profile/Profile';
 
 const registerTemplate = Handlebars.compile(registerTemplateRaw);
 
 const Register: React.FC = () => {
+    const navigate = useNavigate()
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     const validate = (formData: FormData) => {
@@ -22,9 +26,9 @@ const Register: React.FC = () => {
         if (!formData.get('email')) {
             newErrors.email = 'Email is required';
         }
-        if (!formData.get('email')?.includes?.('@')) {
-            newErrors.email = 'Email shoud be valid';
-        }
+        // if (!formData.get('email')?.includes?.('@')) {
+        //     newErrors.email = 'Email shoud be valid';
+        // }
         // Add more validation as needed
         if (password === password.toLowerCase()) {
             newErrors.password = 'Password should have capital letters';
@@ -39,7 +43,16 @@ const Register: React.FC = () => {
         const validationErrors = validate(formData);
 
         if (Object.keys(validationErrors).length === 0) {
+            const user: User = {} as User;
+            formData.forEach((value, key) => {
+                user[key as keyof User] = value as string;
+            });
             // No validation errors, proceed with form submission
+            Api.post('/api/register', user)
+                .then(res => {
+                    localStorage.setItem('token', res)
+                    navigate('/')
+                })
             console.log('Form is valid');
         } else {
             setErrors(validationErrors);
